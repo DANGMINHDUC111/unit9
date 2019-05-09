@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/all.min.css">
+	<style>
+	    .slide
+	    {
+	    	width: 500px;
+	    	height: 313px;
+	    	margin: auto;
+	    	position: relative;
+	    }
+		.icon
+		{
+			background: #00000033;
+			padding: 10px;
+			width: 20px;
+			height: 20px;
+			color: white;
+			font-size: 25px;
+		}
+		
+		._1slide
+		{
+			position: absolute;
+			text-align: center;
+			display: none;
+		}
+		._1slide>p
+		{
+			position: absolute;
+			bottom: 50px;
+			left: 24px;
+			color: white;
+		}
+		._1slide>img
+		{
+			width: 100%;
+			height: 100%;
+		}
+		#left 
+		{
+			position: absolute;
+			top:47%;
+			left: 20px;
+			color: white;
+			background: #00000057;
+			font-size: 20px;
+			padding: 10px;
+		}
+		#right 
+		{
+			position: absolute;
+			top:47%;
+			right: 20px;
+			color: white;
+			background: #00000057;
+			font-size: 20px;
+			padding: 10px;
+		}
+		.active
+		{
+			display: block;
+		}
+		.buttonn
+		{	
+			position: absolute;
+			width: 100%;
+			text-align: center;
+			bottom: 0;
+
+		}
+		.cham
+		{
+			
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			background:gray;
+			display: inline-block;
+		}
+		.pactive
+		{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div class="slide">
+	<div class="_1slide active">
+		<img src="images/1.jpg" alt="">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 1111111111.</p>
+
+	</div>
+	<div class="_1slide">
+		<img src="images/2.jpg" alt="" width="100%">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 2222222222.</p>
+		
+	</div>
+	<div class="_1slide">
+		<img src="images/3.jpg" alt="" width="100%">
+		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, 3333333333.</p>
+	</div>
+	<div id="left" onclick="left()"><i class="fas fa-chevron-left"></i></div>
+	<div id="right" onclick="right()"><i class="fas fa-chevron-right"></i></div>
+	<div class="buttonn">
+			<p class="cham pactive" onclick="bt(0)"></p>
+			<p class="cham" onclick="bt(1)"></p>
+			<p class="cham" onclick="bt(2)"></p>
+		</div>
+	</div><!--  end slide -->
+
+
+
+
+	<script>
+
+		var dem=0;
+		var item=document.getElementsByClassName('_1slide');
+		
+		var button=document.getElementsByClassName('cham');
+		function left() {
+			dem--;
+			for (var i = item.length - 1; i >= 0; i--) {
+			 	item[i].className='_1slide'
+			 	button[i].className='cham'
+			 } 
+			if(dem<0)
+				dem=item.length - 1
+			item[dem].className='_1slide active'
+			button[dem].className='cham pactive'
+		}
+
+		function right() {
+			dem++;
+			for (var i = item.length - 1; i >= 0; i--) {
+			 	item[i].className='_1slide'
+			 	button[i].className='cham'
+			 }
+			 if(dem>item.length - 1)
+			 dem=0
+			 item[dem].className='_1slide active'
+			 button[dem].className='cham pactive'
+		}
+
+		function bt (x) {
+			for (var i = item.length - 1; i >= 0; i--) {
+			 	item[i].className='_1slide'
+			 	button[i].className='cham'
+			 } 
+			 	item[x].className='_1slide active';
+			    button[x].className='cham pactive';
+			 
+		}
+
+			window.setInterval(function(){ right(); }, 5000);
+	</script>
+</body>
+</html>
